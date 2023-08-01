@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Index</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    </head>
+    <style>
+      img{
+        width: 100%;
+        height: 350px;
+      }
+      h5{
+        margin-bottom: 0px;
+      }
+      p{
+        padding-top: 1.5rem;
+      }
+    </style>
+    <body class="container">
+      {% from "./paginate.html" import render_pagination %}
+      
+      <div>
+        {% for article in articles %}
+            <article>
+              <header>
+                <img src="{{article.image_url}}" alt="">
+              </header>
+              <h5>
+                 <a href="{{article.url}}" target="_blank">
+                    {{article.title}} - {{article.source}}
+                 </a>                                    
+              </h5>
+              <small>{{article.date_publish.strftime("%d-%m-%Y,%H:%M")}} </small>
+              <p>{{article.description}} </p>
+            </article>
+        {% endfor %}
+      </div>
+      {{render_pagination(articles,"controller.index")}}
+    </body>
+</html>
+
