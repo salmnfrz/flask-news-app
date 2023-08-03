@@ -52,7 +52,11 @@ def fetch_news():
             if link.get("publishdate_meta_name",None):
                 publish_date = link["publishdate_meta_name"]
                 publish_date = article_soup.select_one(f"meta[name='{publish_date}']")["content"]
-                article_dict["publish_date"] = datetime.strptime(publish_date,"%Y-%m-%d %H:%M:%S")
+                try:
+                    article_dict["publish_date"] = datetime.strptime(publish_date,"%Y-%m-%d %H:%M:%S")
+                except Exception as e:
+                    print(e)
+                    pass
  
             article_dict["description"] = article_soup.select_one("meta[name='description']")["content"]
 
