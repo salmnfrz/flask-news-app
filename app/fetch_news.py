@@ -25,7 +25,7 @@ def fetch_news():
             html = BeautifulSoup(content.text, 'html.parser')   
             title_link_class = link["title_link_class"]
             articles = html.select(title_link_class)      
-        # print(articles)
+        print(articles)
  
         for article in articles:
             # print(article)
