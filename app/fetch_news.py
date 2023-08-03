@@ -11,7 +11,6 @@ def fetch_news():
 
     article_arr = []
     article_dict = {}
-    content = ""
  
     for link in SOURCE_LINKS:
         try:
@@ -21,10 +20,10 @@ def fetch_news():
             print("connection error")
         except Exception as e:
             print(e)
- 
-        html = BeautifulSoup(content.text, 'html.parser')   
-        title_link_class = link["title_link_class"]
-        articles = html.select(title_link_class)      
+        else:
+            html = BeautifulSoup(content.text, 'html.parser')   
+            title_link_class = link["title_link_class"]
+            articles = html.select(title_link_class)      
         # print(articles)
  
         for article in articles:
