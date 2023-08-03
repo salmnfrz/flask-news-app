@@ -11,6 +11,7 @@ def fetch_news():
 
     article_arr = []
     article_dict = {}
+    content = ""
  
     for link in SOURCE_LINKS:
         try:
